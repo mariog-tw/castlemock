@@ -47,7 +47,7 @@ public class SoapServiceController extends AbstractSoapServiceController {
 
     @Autowired
     public SoapServiceController(final ServiceProcessor serviceProcessor, final ServletContext servletContext){
-        super(serviceProcessor, servletContext);
+        super(serviceProcessor, servletContext, soapHttpClient);
     }
 
     /**

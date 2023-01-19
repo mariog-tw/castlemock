@@ -37,6 +37,7 @@ import com.castlemock.service.mock.soap.project.output.ReadSoapProjectOutput;
 import com.castlemock.web.core.controller.AbstractController;
 import com.castlemock.web.mock.soap.controller.mock.SoapServiceController;
 import com.castlemock.web.mock.soap.model.SoapException;
+import com.castlemock.web.mock.soap.utility.SoapHttpClient;
 import com.castlemock.web.mock.soap.web.AbstractControllerTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -76,6 +77,8 @@ public class SoapServiceControllerTest extends AbstractControllerTest {
     private SoapServiceController soapServiceController;
     @Mock
     private ServiceProcessor serviceProcessor;
+    @Mock
+    private SoapHttpClient soapHttpClient;
 
     private static final String PROJECT_ID = "ProjectId";
     private static final String SOAP_PORT_ID = "SoapPortId";
@@ -138,7 +141,7 @@ public class SoapServiceControllerTest extends AbstractControllerTest {
             "</wsdl:definitions>";
 
     @Test
-    public void testMockedAutomaticForwarNoMockedResponseAndForwardURLIsDefined(){
+    public void testMockedAutomaticForwardNoMockedResponseAndForwardURLIsDefined(){
         // Input
         final HttpServletRequest httpServletRequest = getMockedHttpServletRequest(REQUEST_BODY);
         final HttpServletResponse httpServletResponse = getHttpServletResponse();
@@ -169,7 +172,7 @@ public class SoapServiceControllerTest extends AbstractControllerTest {
     }
 
     @Test(expected = SoapException.class)
-    public void testMockedAutomaticForwarNoMockedResponseAndNoForwardURLIsDefined(){
+    public void testMockedAutomaticForwardNoMockedResponseAndNoForwardURLIsDefined(){
         // Input
         final HttpServletRequest httpServletRequest = getMockedHttpServletRequest(REQUEST_BODY);
         final HttpServletResponse httpServletResponse = getHttpServletResponse();
